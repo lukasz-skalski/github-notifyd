@@ -35,15 +35,15 @@
 #include <systemd/sd-journal.h>
 #endif
 
-/*
- * PLEASE GENERATE NEW PERSONAL ACCESS TOKEN
- * more info:
- *   - https://github.com/settings/tokens
- *   - https://help.github.com/articles/creating-an-access-token-for-command-line-use
- */
+#ifndef ACCESS_TOKEN
+#error TODO
+#endif
 
-#define ACCESS_TOKEN                 "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" /* your personal access token */
-#define ACCESS_TOKEN_HEADER          "Authorization: token " ACCESS_TOKEN
+#define QUOTE(name) #name
+#define STR(macro) QUOTE(macro)
+#define TOKEN_STR STR(ACCESS_TOKEN)
+
+#define ACCESS_TOKEN_HEADER          "Authorization: token " TOKEN_STR
 #define USER_AGENT_HEADER            "User-Agent: github-notifyd/1.0"
 
 #define RESPONSE_CODE_OK             200
